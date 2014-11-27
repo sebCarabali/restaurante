@@ -1,49 +1,50 @@
+/****************************************************************************************
+* > Programa que aplica el teorema de bolzano para encontrar los ceros de una función.
+*
+* > Autor: Sebastián Carabali (sebastiancc@unicauca.edu.co)
+* > Fecha: 25 de Noviembre de 2014
+****************************************************************************************/
+
 #include <stdio.h>
 #include <math.h>
 
 #define EPSILON 0.00001
 
-float function(float x)
-{
-    return sin(x) / pow(x, 2);
+/* Funcion sobre la cual se va a aplicar el teorema */
+float function(float x) {
+    return (log(x)/sin(x)) * cos(x);
 }
 
-float eval(float value,float (*f)(float))
-{
+/* Funcion que evalua la funcion en un valor */
+float eval(float value,float (*f)(float)) {
     return f(value);
 }
 
-float absoluteValue(float a)
-{
-    if( a < 0)
-    {
+/* Valor absoluto para un float */
+float absoluteValue(float a) {
+    if( a < 0) {
         return a*-1;
     }
     return a;
 }
 
-float findRoot(float a, float b)
-{
+/* Funcion recursiva que aplica el teorema de bolzano */
+float findRoot(float a, float b) {
     float mid = (a+b)/2;
     float ev = eval(mid, function);
     printf("MID = %f ============> EV = %f\n", mid, ev);
-    if(absoluteValue(ev) <= EPSILON)
-    {
+    if(absoluteValue(ev) <= EPSILON) {
         return mid;
     }
-    if(eval(a,function) * ev < 0)
-    {
+    if(eval(a,function) * ev < 0) {
         return findRoot(a, mid);
-    }
-    else
-    {
+    } else {
         return findRoot(mid, b);
     }
 }
 
-
-int main(int argc, char *argv[])
-{
+/* Funcion principal */
+int main(int argc, char *argv[]) {
     float a, b;
     printf("Programa que usa el teorema de Bolzano para hallar al menos un cero de una funcion en un intervalo [a,b]\n");
     printf("Ingrse el valor de a: ");
@@ -52,20 +53,13 @@ int main(int argc, char *argv[])
     scanf("%f", &b);
     float evalA = eval(a, function);
     float evalB = eval(b, function);
-    if( evalA * evalB < 0)
-    {
-        printf("La función tiene un ceros en x = %f\n", findRoot(a,b));
-    }
-    else if(evalA == 0)
-    {
+    if( evalA * evalB < 0) {
+        printf("La función tiene un cero en x = %f\n", findRoot(a,b));
+    } else if(evalA == 0) {
         printf("La función tiene un ceros en x = %f\n", a);
-    }
-    else if(evalB == 0)
-    {
+    } else if(evalB == 0) {
         printf("La función tiene un ceros en x = %f\n", b);
-    }
-    else
-    {
+    } else {
         printf("No se cumple la condición necesaria del teorema\n");
     }
     return 0;
