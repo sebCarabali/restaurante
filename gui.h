@@ -35,7 +35,7 @@ GtkWidget *create_main_window();
  */
 GtkWidget *create_popup_window(char *);
 
-
+/* Menu de reserva */
 
 /*
  * Function:  open_crear_reserva

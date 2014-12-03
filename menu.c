@@ -2,8 +2,7 @@
 #include "gui.h"
 #include "menu.h"
 
-GtkWidget *create_menu_reservas()
-{
+GtkWidget *create_menu_reservas() {
     GtkWidget *menu_reserva;
     GtkWidget *submenu_reserva;
     GtkWidget *crear_item, *eliminar_item, *editar_item;
@@ -33,16 +32,23 @@ GtkWidget *create_menu_reservas()
     return menu_reserva;
 }
 
-GtkWidget *create_menu_bar()
-{
+GtkWidget *create_menu_bar() {
     GtkWidget *menubar;
+    GtkWidget *item_config;
 
     /* creamos la barra de menu */
     menubar = gtk_menu_bar_new();
 
-    /* añade el menu de reservas */
-    gtk_menu_shell_append(GTK_MENU_SHELL(menubar), create_menu_reservas());
+    /* crear menu item configurar */
+    item_config = gtk_menu_item_new_with_label("Configurar");
 
+    /* añade al menu lo de configurar */
+    gtk_menu_shell_append(GTK_MENU_SHELL(menubar), item_config);
+
+    if(0) { /* si el usuario hizo la configuracion inicial mostrar el resto del menu */
+        /* añade el menu de reservas */
+        gtk_menu_shell_append(GTK_MENU_SHELL(menubar), create_menu_reservas());
+    }
 
     return menubar;
 }

@@ -34,16 +34,8 @@ GtkWidget *create_popup_window(char *title) {
 }
 
 void open_crear_reserva() {
-    /*GtkWidget *window_reserva; */
+    /* Tabla para organizar elementos en la ventana */
     GtkWidget *table;
-    /* etiquetas
-    GtkWidget *lbl_nombre;
-    GtkWidget *lbl_identificacion;
-    GtkWidget *lbl_mesa;
-    /* campos de texto
-    GtkWidget *txt_nombre;
-    GtkWidget *txt_identificacion;
-    GtkWidget *txt_mesa;
     /* botones */
     GtkWidget *btn_ok;
     GtkWidget *btn_cancel;
