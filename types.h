@@ -11,36 +11,13 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-typedef struct _Plato Plato; // Representa los platos del menu.
-typedef struct _Menu Menu; // Representa el menu del restaurante por día
-typedef struct _Mesa Mesa; // Representa una mesa del restaurante
-typedef struct _Restaurante Restaurante; // Representa el restaurante
-typedef struct _Orden Orden;
+typedef struct _Reserva Reserva;
 
-enum EstadoMesa { DISPONIBLE = 1, RESERVADA, OCUPADA } ;
-
-struct _Plato {
-    GString *nombre; // Nombre del plato
-    GdkPixbuf *imagen; // Imagen del plato
-};
-
-struct _Menu {
-    gushort dia; // Dáa en que se va a servir el menu
-    GList *platos; // Lista de platos del dáa
-};
-
-struct _Mesa {
-    GList *platos; // Platos ordenados en la mesa
-    gboolean reservada;
-    gboolean ocupada;
-};
-
-struct _Restaurante {
-    GList *mesas;
-    GString *nombre;
-    GString *direccion;
-    gushort estrellas;
-    gushort numeroMesas;
+struct _Reserva {
+    char nombre_cliente[30];
+    char identificacion_cliente[30];
+    unsigned short numero_mesa;
+    /** TODO añadir fecha. */
 };
 
 #endif // __TYPES_H__
