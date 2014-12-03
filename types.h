@@ -14,9 +14,9 @@
 typedef struct _Reserva Reserva;
 
 struct _Reserva {
-    char nombre_cliente[30];
-    char identificacion_cliente[30];
-    unsigned short numero_mesa;
+    gchar *nombre_cliente;
+    gchar *identificacion_cliente;
+    unsigned short n_mesa;
     /** TODO añadir fecha. */
 };
 
